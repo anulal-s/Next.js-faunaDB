@@ -6,13 +6,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './modules/home/home.component';
+import { DealerComponent } from './modules/dealer/dealer.component';
+import { MedicineComponent } from './modules/medicine/medicine.component';
+import { SearchComponent } from './modules/search/search.component';
+import { AdminComponent } from './modules/admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    DealerComponent,
+    MedicineComponent,
+    SearchComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
