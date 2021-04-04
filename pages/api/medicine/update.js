@@ -1,10 +1,9 @@
-import { createMedicine } from '../../utils/Fauna';
+import { updateMedicine } from '../../../utils/Fauna';
 export default async function handler(req, res) {
-    const { details, dealer, description, name } = req.body;
-    console.log('body',  req.body, req.method);
-    if (req.method !== 'POST') {
+    if (req.method !== 'PUT') {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
+    const { id, details, dealer, description, name } = req.body;
 
     if( typeof details === 'undefined' ||
         typeof dealer === 'undefined'  ||
@@ -13,9 +12,11 @@ export default async function handler(req, res) {
     ) {
         return res.status(405).json({ msg: 'Error in Params' });
     }
+
     try {
-        const createdSinppet = await createMedicine(details, dealer, description, name);
-        return res.status(200).json(createdSinppet);
+        const update = await updateMedicine(id, details, dealer, description, name);
+        return res.status(200).json(update);
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ msg: 'Something went wrong.' });

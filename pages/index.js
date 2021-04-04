@@ -3,10 +3,9 @@ import Snippet from '../components/Snippet';
 import useSWR from 'swr';
 import Link from 'next/link';
 export default function Home() {
-    //TODO: use swr to retrieve snippets
-    //const snippets = [];
+    
     const {data: snippets, mutate} = useSWR("/api/snippets");
-    console.log(snippets);
+    const dealers = useSWR("/api/dealers");
     
     return (
         <div>
@@ -23,7 +22,7 @@ export default function Home() {
                     <p className="text-red-200">
                         Create and browse medicine you use every day in Store !
                     </p>
-                    <Link href="/new">
+                    <Link href="/new/medicine">
                         <a className="mt-3 inline-block bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             Create a Medicine !
                         </a>

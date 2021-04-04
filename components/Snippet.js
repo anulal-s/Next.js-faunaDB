@@ -7,17 +7,19 @@ export default function Snippet({ snippet, snippetDeleted }) {
     const router = useRouter();
 
     const deleteMedicine = async () => {
-        try {
-            await fetch('/api/deleteMedicine', {
-                method: 'DELETE',
-                body: JSON.stringify({ id: snippet.id }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            snippetDeleted();
-        } catch (err) {
-            console.error(err);
+        if (window.confirm("Do you really want to delete?")) {
+            try {
+                await fetch('/api/medicine/delete', {
+                    method: 'DELETE',
+                    body: JSON.stringify({ id: snippet.id }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                snippetDeleted();
+            } catch (err) {
+                console.error(err);
+            }
         }
     };
     return (
