@@ -1,12 +1,11 @@
-import { updateMedicine } from '../../../utils/Fauna';
+import { updateDealer } from '../../../utils/Fauna';
 export default async function handler(req, res) {
     if (req.method !== 'PUT') {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
-    const { id, details, dealer, description, name } = req.body;
+    const { id, name, description, details } = req.body;
 
     if( typeof details === 'undefined' ||
-        typeof dealer === 'undefined'  ||
         typeof description === 'undefined'  ||
         typeof name === 'undefined' 
     ) {
@@ -14,7 +13,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const update = await updateMedicine(id, details, dealer, description, name);
+        const update = await updateDealer(id, name, description, details);
         return res.status(200).json(update);
 
     } catch (err) {

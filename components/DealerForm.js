@@ -7,7 +7,6 @@ export default function DealerForm({ dealer }) {
     const {register, handleSubmit, errors} = useForm({
         defaultValues: {
             details: dealer? dealer.data.details: '',
-            dealer: dealer? dealer.data.dealer: '',
             description: dealer? dealer.data.description: '',
             name: dealer? dealer.data.name: ''
         }
@@ -15,11 +14,11 @@ export default function DealerForm({ dealer }) {
     const router = useRouter();
 
     const createDealer = async (data) => {
-        const { details, dealer, description, name } = data;
+        const { name, description, details } = data;
         try {
             await fetch('/api/dealer/create', {
                 method: 'POST',
-                body: JSON.stringify({details, dealer, name}),
+                body: JSON.stringify({name, description, details}),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -31,12 +30,12 @@ export default function DealerForm({ dealer }) {
     };
 
     const updateDealer = async (data) => {
-        const { details, dealer, description, name } = data;
+        const { name, description, details } = data;
         const id = dealer.id;
         try {
             await fetch('/api/dealer/update', {
                 method: 'PUT',
-                body: JSON.stringify({details, dealer, name, id}),
+                body: JSON.stringify({name, description, details, id}),
                 headers: {
                     'Content-Type': 'application/json'
                 }

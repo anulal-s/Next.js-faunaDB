@@ -5,8 +5,8 @@ export default async function handler(req, res) {
     }
 
     try {
-        const dealers = await getSnippets();
-        return res.status(200).json(dealers);
+        const medicines = await getSnippets();
+        return res.status(200).json(medicines);
     } catch (err) {
         console.error(err);
         res.status(500).json({ msg: 'Something went wrong.' });

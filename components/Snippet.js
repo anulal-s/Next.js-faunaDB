@@ -3,7 +3,7 @@ import Code from './Code';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function Snippet({ snippet, snippetDeleted }) {
+export default function Snippet({ snippet, snippetDeleted, dealer}) {
     const router = useRouter();
 
     const deleteMedicine = async () => {
@@ -29,7 +29,7 @@ export default function Snippet({ snippet, snippetDeleted }) {
                     {snippet.data.name}
                 </h2>
                 <span className="font-bold text-xs text-red-800 px-2 py-1 rounded-lg ">
-                    {snippet.data.dealer}
+                    {dealer}
                 </span>
             </div>
             <p className="text-gray-900 mb-4">{snippet.data.description}</p>

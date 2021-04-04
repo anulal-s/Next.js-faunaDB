@@ -5,7 +5,15 @@ import Link from 'next/link';
 export default function Home() {
     
     const {data: snippets, mutate} = useSWR("/api/snippets");
+    const {data: dealers} = useSWR("/api/dealers");
     
+    const dealersKeyValue = {};
+    if(dealers) {
+        dealers.forEach((dealer) => {
+            dealersKeyValue[dealer.id] = dealer.name;
+        });
+    }
+
     return (
         <div>
             <Head>
@@ -33,6 +41,7 @@ export default function Home() {
                             key={snippet.id}
                             snippet={snippet}
                             snippetDeleted={mutate}
+                            dealer={dealersKeyValue[snippet.data.dealer]}
                         />
                     ))}
             </main>

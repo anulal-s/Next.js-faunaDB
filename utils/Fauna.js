@@ -26,13 +26,13 @@ const getSnippetById = async (id) => {
 
 const createMedicine = async (details, dealer, description, name) => {
     return await faunaClient.query(q.Create(q.Collection('snippets'), {
-        data: {details, dealer, description, name }
+        data: {name, dealer, description,  details}
     }))
 };
 
 const updateMedicine = async (id, details, dealer, description, name) => {
     return await faunaClient.query(q.Update(q.Ref(q.Collection('snippets'), id), {
-        data: { details, dealer, name, description}    
+        data: {name, dealer, description, details}    
     }))
 };
 
@@ -40,15 +40,15 @@ const deleteMedicine = async (id) => {
     return await faunaClient.query(q.Delete(q.Ref(q.Collection('snippets'), id)))
 };
 
-const createDealer = async (details, dealer, description, name) => {
+const createDealer = async (name, description, details) => {
     return await faunaClient.query(q.Create(q.Collection('dealers'), {
-        data: {details, dealer, description, name }
+        data: {name, description, details}
     }))
 };
 
-const updateDealer = async (id, details, dealer, description, name) => {
+const updateDealer = async (id, name, description, details) => {
     return await faunaClient.query(q.Update(q.Ref(q.Collection('dealers'), id), {
-        data: { details, dealer, name, description}    
+        data: {name, description, details}    
     }))
 };
 

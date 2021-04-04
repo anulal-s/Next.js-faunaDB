@@ -1,7 +1,11 @@
 import Head from 'next/head';
 import MedicineForm from '../../components/MedicineForm';
+import useSWR from 'swr';
 
-export default function Home({ dealers }) {
+export default function Home() {
+
+    const {data: dealers} = useSWR("/api/dealers");
+
     return (
         <div>
             <Head>

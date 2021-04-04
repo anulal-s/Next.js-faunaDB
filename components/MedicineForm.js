@@ -81,16 +81,11 @@ export default function MedicineForm({ medicine, dealers }) {
                     className="w-full border bg-white rounded px-3 py-2 outline-none text-gray-700"
                     ref={register({ required: true })}
                 >
-                    <option className="py-1">JavaScript</option>
-                    <option className="py-1">HTML</option>
-                    <option className="py-1">CSS</option>
-                    <option className="py-1">Create New Dealer</option>
 
                     { dealers &&
                     dealers.map((dealer) => (
                         <option className="py-1" key={dealer.id} value={dealer.id}>{dealer.name}</option>
                     ))}
-
 
                 </select>
                 {errors.dealer && (
