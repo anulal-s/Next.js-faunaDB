@@ -2,9 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-export default function MedicineForm({ medicine }) {
-
-    console.log(medicine);
+export default function MedicineForm({ medicine, dealers }) {
     
     const {register, handleSubmit, errors} = useForm({
         defaultValues: {
@@ -87,6 +85,13 @@ export default function MedicineForm({ medicine }) {
                     <option className="py-1">HTML</option>
                     <option className="py-1">CSS</option>
                     <option className="py-1">Create New Dealer</option>
+
+                    { dealers &&
+                    dealers.map((dealer) => (
+                        <option className="py-1" key={dealer.id} value={dealer.id}>{dealer.name}</option>
+                    ))}
+
+
                 </select>
                 {errors.dealer && (
                     <p className="font-bold text-red-900">Dealer is required</p>  

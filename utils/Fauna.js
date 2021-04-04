@@ -63,12 +63,14 @@ const getDealers = async () => {
             q.Lambda('ref', q.Get(q.Var('ref')))
         )
     );
-    const snippets = data.map(snippet => {
-        snippet.id = snippet.ref.id;
-        delete snippet.ref;
-        return snippet
+    const dealers = data.map(dealer => {
+        dealer.id = dealer.ref.id;
+        dealer.name = dealer.data.name;
+        delete dealer.ref;
+        delete dealer.data;
+        return dealer
     })
-    return snippets;
+    return dealers;
 };
 
 

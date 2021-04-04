@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { getSnippetById } from '../../utils/Fauna';
+import { getSnippetById, getDealers } from '../../utils/Fauna';
 import MedicineForm from '../../components/MedicineForm';
 
-export default function Home({ snippet }) {
+export default function Home({ medicine, dealers }) {
     return (
         <div>
             <Head>
@@ -12,7 +12,7 @@ export default function Home({ snippet }) {
 
             <main className="max-w-lg mx-auto">
                 <h1 className="text-red-100 text-2xl mb-4">Update Snippet</h1>
-                <MedicineForm snippet={snippet} />
+                <MedicineForm medicine={medicine} dealers={dealers} />
             </main>
         </div>
     );
@@ -21,9 +21,10 @@ export default function Home({ snippet }) {
 export async function getServerSideProps(context) {
     try {
         
-        const snippet = await getSnippetById(context.params.id);
+        const medicine = await getSnippetById(context.params.id);
+        const dealers = await getDealers()
         return {
-            props: {snippet},
+            props: {medicine, dealers},
         };
     } catch (error) {
         console.error(error);

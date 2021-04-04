@@ -5,7 +5,6 @@ import Link from 'next/link';
 export default function Home() {
     
     const {data: snippets, mutate} = useSWR("/api/snippets");
-    const dealers = useSWR("/api/dealers");
     
     return (
         <div>
