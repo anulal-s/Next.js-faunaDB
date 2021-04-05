@@ -6,12 +6,12 @@ export default function Home({ medicine, dealers }) {
     return (
         <div>
             <Head>
-                <title>Update Next Snippet</title>
+                <title>Update Medicine</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <main className="max-w-lg mx-auto">
-                <h1 className="text-red-100 text-2xl mb-4">Update Snippet</h1>
+                <h1 className="text-red-100 text-2xl mb-4">Update Medicine</h1>
                 <MedicineForm medicine={medicine} dealers={dealers} />
             </main>
         </div>
