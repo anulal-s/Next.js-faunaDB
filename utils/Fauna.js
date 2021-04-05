@@ -73,6 +73,11 @@ const getDealers = async () => {
     return dealers;
 };
 
+const getDealerById = async (id) => {
+    const snippet =  await faunaClient.query(q.Get(q.Ref(q.Collection('dealers'), id)));
+    return snippet.data;
+};
+
 
 module.exports = {
     createMedicine,
@@ -83,5 +88,6 @@ module.exports = {
     createDealer,
     updateDealer,
     deleteDealer,
-    getDealers
+    getDealers,
+    getDealerById
 };
