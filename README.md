@@ -1,4 +1,4 @@
-
+## Server side Rendering (next.js) MediList
 
 ```bash
 npm run dev
